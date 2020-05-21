@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="ControlMyPrivacy.AppBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             
+             xmlns:local="clr-namespace:ControlMyPrivacy"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+             d:DesignHeight="200" 
+             d:DesignWidth="400">
+    <Grid x:Name="Space" MouseDown="Space_MouseDown" DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}">
+        <Grid x:Name="WindowAccess" DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"></Grid>
+        <md:ColorZone Mode="Accent" Padding="15 10">
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="ReturnBackButton"
+                            Margin="0 0 10 0"
+                            VerticalAlignment="Center"
+                            Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                            Click="ReturnBackButton_Click"
+                            Visibility="{Binding ReturnBackVisibility, Converter={StaticResource BoolToVisConverter}}">
+                        <md:PackIcon Kind="ArrowBack" 
+                                     Height="24"
+                                     Width="24"></md:PackIcon>
+                    </Button>
+                    <TextBlock Text="{Binding DataContext.Title, ElementName=WindowAccess}"
+                           Style="{DynamicResource MaterialDesignHeadline5TextBlock}"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="MinimizeButton" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Margin="5" Click="MinimizeButton_Click">
+                        <md:PackIcon Kind="WindowMinimize" Height="24" Width="24" />
+                    </Button>
+                    <Button x:Name="CloseButton" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"  Margin="5" Click="CloseButton_Click">
+                        <md:PackIcon Kind="WindowClose" Height="24" Width="24" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </md:ColorZone>
+    </Grid>
+</UserControl>

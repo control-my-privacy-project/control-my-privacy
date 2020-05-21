@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="ControlMyPrivacy.ScreenController.ScreenController"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:profileselectionscreen="clr-namespace:ControlMyPrivacy.ProfileSelectionScreen"
+             xmlns:profilesettingsscreen="clr-namespace:ControlMyPrivacy.ProfileSettingsScreen"
+             xmlns:local="clr-namespace:ControlMyPrivacy.ScreenController"
+             xmlns:profilesigninscreen="clr-namespace:ControlMyPrivacy.ProfileSignInScreen"
+             d:DesignHeight="800" d:DesignWidth="400">
+    <UserControl.Resources>
+        <local:PossibleScreenConverter x:Key="PossibleScreenConverter"/>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}">
+        <md:Transitioner SelectedIndex="{Binding CurrentScreen, Converter={StaticResource PossibleScreenConverter}}">
+            <md:TransitionerSlide OpeningEffect="{md:TransitionEffect Kind=SlideInFromBottom}">
+                <md:TransitionerSlide.ForwardWipe>
+                    <md:FadeWipe />
+                </md:TransitionerSlide.ForwardWipe>
+                <md:TransitionerSlide.BackwardWipe>
+                    <md:FadeWipe />
+                </md:TransitionerSlide.BackwardWipe>
+                <profileselectionscreen:ProfileSelectionScreen x:Name="ProfileSelectionScreen" 
+                                                               ProfileSelected="ProfileSelectionScreen_ProfileSelected"
+                                                               ProfileAdd="ProfileSelectionScreen_ProfileAdd" 
+                                                               Profiles="{Binding DisplayedProfiles}"
+                                                               RealName="{Binding RealName}" />
+            </md:TransitionerSlide>
+            <md:TransitionerSlide OpeningEffect="{md:TransitionEffect Kind=SlideInFromTop}">
+                <md:TransitionerSlide.ForwardWipe>
+                    <md:FadeWipe />
+                </md:TransitionerSlide.ForwardWipe>
+                <md:TransitionerSlide.BackwardWipe>
+                    <md:FadeWipe />
+                </md:TransitionerSlide.BackwardWipe>
+                <profilesettingsscreen:ProfileSettingsScreen x:Name="ProfileSettingsScreen" Profile="{Binding CurrentProfile}" DeleteProfile="ProfileSettingsScreen_DeleteProfile" />
+            </md:TransitionerSlide>
+            <md:TransitionerSlide OpeningEffect="{md:TransitionEffect Kind=SlideInFromTop}">
+                <md:TransitionerSlide.ForwardWipe>
+                    <md:FadeWipe />
+                </md:TransitionerSlide.ForwardWipe>
+                <md:TransitionerSlide.BackwardWipe>
+                    <md:FadeWipe />
+                </md:TransitionerSlide.BackwardWipe>
+                <profilesigninscreen:ProfileSignInScreen x:Name="ProfileSignInScreen" 
+                                                         ProfileSignedIn="ProfileSignInScreen_ProfileSignedIn" />
+            </md:TransitionerSlide>
+        </md:Transitioner>
+    </Grid>
+</UserControl>

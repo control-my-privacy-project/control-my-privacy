@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="ControlMyPrivacy.ProfileSettingsScreen.ProfileSettingsScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:ControlMyPrivacy.ProfileSettingsScreen"
+             
+             d:DesignHeight="800" d:DesignWidth="400">
+    <Grid x:Name="LayoutRoot" DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" DataContext="{Binding Profile}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" Width="100">
+                    <md:Card md:ShadowAssist.ShadowDepth="Depth2" UniformCornerRadius="30">
+                        <Image Source="{Binding Avatar}" Stretch="UniformToFill"/>
+
+                    </md:Card>
+                </Grid>
+                <TextBlock Text="{Binding Name}"
+                       Grid.Row="2"
+                       Style="{DynamicResource MaterialDesignHeadline4TextBlock}" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding Url}"
+                       Grid.Row="3"
+                       Style="{DynamicResource MaterialDesignHeadline5TextBlock}" 
+                       FontWeight="Regular" 
+                       HorizontalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Row="2" Margin="5 0 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer Grid.Row="0" CanContentScroll="False"
+                              Style="{DynamicResource MaterialDesignScrollViewer}"
+                              md:ScrollViewerAssist.CornerRectangleVisibility="Visible">
+                    <ScrollViewer.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}">
+                            <Setter Property="md:ScrollBarAssist.ThumbCornerRadius" Value="5"/>
+                        </Style>
+                    </ScrollViewer.Resources>
+                    <ItemsControl ItemsSource="{Binding SettingKeys}" Margin="0 0 0 10"
+                                  VirtualizingPanel.IsVirtualizing="True" 
+                                  VirtualizingPanel.ScrollUnit="Pixel" x:Name="SettingCards">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <local:ProfileSettingCard SettingKey="{Binding}" Margin="0 10 0 0"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                <local:ProfileSettingCard SettingKey="{Binding AllSettingsKey}" x:Name="EstimatedPrivacyCard"  Grid.Row="2" Margin="0 0 5 0" OnSelectedSettingChanged="ProfileSettingCard_OnSelectedSettingChanged"/>
+            </Grid>
+        </Grid>
+        <Grid Panel.ZIndex="1000" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button Background="Red" BorderBrush="DarkRed" x:Name="DeleteProfileButton" Click="DeleteProfileButton_Click"
+                Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                <md:PackIcon Kind="DeleteForever" 
+                         Height="30"
+                         Width="30"></md:PackIcon>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

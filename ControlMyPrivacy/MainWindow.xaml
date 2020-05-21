@@ -1,0 +1,33 @@
+﻿<Window x:Class="ControlMyPrivacy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d" 
+             
+        xmlns:local="clr-namespace:ControlMyPrivacy"
+        xmlns:screencontroller="clr-namespace:ControlMyPrivacy.ScreenController"
+        Title="Control My Privacy" 
+        Height="800"
+        Width="400"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        AllowsTransparency="True" 
+        WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:AppBar Grid.Row="0" 
+                      ReturnBackVisibility="{Binding ReturnBackVisibility, ElementName=ScreenController}" 
+                      ReturnBackClick="AppBar_ReturnBackClick"/>
+        <Grid Grid.Row="1" Margin="10">
+            <screencontroller:ScreenController x:Name="ScreenController"/>
+        </Grid>
+    </Grid>
+</Window>

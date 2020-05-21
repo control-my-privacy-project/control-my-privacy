@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="ControlMyPrivacy.ProfileSelectionScreen.ProfileAddButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:ControlMyPrivacy.ProfileSelectionScreen"
+             xmlns:models="clr-namespace:ControlMyPrivacy.Models">
+    <Grid x:Name="LayoutRoot" DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}">
+        <md:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                     PlacementMode="TopAndAlignCentres">
+            <md:PopupBox.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Width" Value="50"/>
+                </Style>
+                <Style TargetType="md:PackIcon">
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="30"/>
+                </Style>
+            </md:PopupBox.Resources>
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding SocialMedias}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:SocialMedia}">
+                            <Button IsEnabled="{Binding Available}" Click="Button_Click" Tag="{Binding}">
+                                <md:PackIcon Kind="{Binding Icon}"></md:PackIcon>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </md:PopupBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="ControlMyPrivacy.ProfileSelectionScreen.ProfileCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+             d:DesignHeight="100"
+             d:DesignWidth="400">
+    <Grid x:Name="LayoutRoot" DataContext="{Binding Profile, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}">
+        <Button x:Name="Space" Click="Space_Click"
+                Style="{DynamicResource MaterialDesignRaisedAccentButton}"
+                Height="{Binding ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType=Grid}}"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                Padding="10"
+                md:ButtonAssist.CornerRadius="10">
+            <Grid VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10px"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" 
+                      Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}">
+                    
+                    <md:Card md:ShadowAssist.ShadowDepth="Depth2" UniformCornerRadius="30">
+                        <Image Source="{Binding Avatar}" Stretch="UniformToFill"/>
+
+                    </md:Card>
+                </Grid>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Name}"
+                               Style="{DynamicResource MaterialDesignHeadline5TextBlock}" 
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding Url}"
+                               Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
+                               FontWeight="Regular" />
+                </StackPanel>
+                <Grid Grid.Column="3" VerticalAlignment="Center">
+                    <md:PackIcon Kind="{Binding SocialMedia.Icon}" 
+                                 Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+                                 Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=Grid}}" />
+                </Grid>
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

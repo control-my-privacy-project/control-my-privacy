@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlMyPrivacy", "ControlMyPrivacy\ControlMyPrivacy.csproj", "{07055101-A028-4400-A904-01A8ACC48E6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaProvider", "SocialMediaProvider\SocialMediaProvider.csproj", "{A14E80A3-26B4-407F-B025-4BE44F719C50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07055101-A028-4400-A904-01A8ACC48E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07055101-A028-4400-A904-01A8ACC48E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07055101-A028-4400-A904-01A8ACC48E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07055101-A028-4400-A904-01A8ACC48E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A14E80A3-26B4-407F-B025-4BE44F719C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A14E80A3-26B4-407F-B025-4BE44F719C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A14E80A3-26B4-407F-B025-4BE44F719C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A14E80A3-26B4-407F-B025-4BE44F719C50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA0CB71A-4C95-48E3-AF94-A88DDEB89229}
+	EndGlobalSection
+EndGlobal

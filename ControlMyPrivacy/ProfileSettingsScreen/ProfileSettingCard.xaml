@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ControlMyPrivacy.ProfileSettingsScreen.ProfileSettingCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local="clr-namespace:ControlMyPrivacy.ProfileSettingsScreen"
+             d:DesignWidth="400">
+    <Grid x:Name="LayoutRoot" DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}">
+        <md:Card UniformCornerRadius="10">
+            <StackPanel Margin="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="{Binding SettingKey.Description}"
+                           TextWrapping="Wrap"
+                           Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" />
+                    <TextBlock Grid.Column="1" Text="{Binding SelectedSettingValue.Description}"
+                               Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"/>
+                </Grid>
+                <Slider Value="{Binding SelectedSettingValueNumber}"
+                        Minimum="1"
+                        Maximum="{Binding SettingKey.PossibleValues.Length}"
+                        TickFrequency="1"
+                        IsSnapToTickEnabled="True"
+                        Orientation="Horizontal"
+                        TickPlacement="BottomRight" />
+            </StackPanel>
+        </md:Card>
+    </Grid>
+</UserControl>
