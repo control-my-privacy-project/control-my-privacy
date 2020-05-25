@@ -12,8 +12,8 @@ namespace ControlMyPrivacy.Models
     public class SocialMedia
     {
         public static readonly SocialMedia VK = new SocialMedia("VK", PackIconKind.Vk);
-        public static readonly SocialMedia FaceBook = new SocialMedia("FaceBook", PackIconKind.Facebook);
-        public static readonly SocialMedia Twitter = new SocialMedia("Twitter", PackIconKind.Twitter);
+        public static readonly SocialMedia FaceBook = new SocialMedia("FaceBook", PackIconKind.Facebook, false);
+        public static readonly SocialMedia Twitter = new SocialMedia("Twitter", PackIconKind.Twitter, false);
 
         public PackIconKind Icon { get; set; }
         public string Name { get; set; }
